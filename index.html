@@ -231,7 +231,7 @@
 
 <script>
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
-const LIVREUR_WHATSAPP = '33695242023'   // 👈 Ton numéro WhatsApp
+const LIVREUR_WHATSAPP = '33XXXXXXXXX'   // 👈 Ton numéro WhatsApp
 const REVOLUT_LINK = 'https://revolut.me/TONLIEN'  // 👈 Ton lien Revolut
 const MIN_ORDER = 5.00
 const LIVRAISON_GRATUITE_SEUIL = 20.00
@@ -511,7 +511,38 @@ function commander() {
   const d=new Date().toLocaleDateString('fr')
   const lignes=cart.map(x=>`  • ${x.ico} ${x.nom} ×${x.qty} = ${(x.prix*x.qty).toFixed(2)}€`).join('\n')
   const cadeauLine=hasCadeau()?'\n🎁 *1 CANETTE AU CHOIX OFFERTE !*':''
-  const msg=`🧃 *NOUVELLE COMMANDE FreshCorner*\n━━━━━━━━━━━━━━━━━\n📅 ${d} à ${h}\n👤 *${nom}*\n📱 ${tel}\n📍 ${adr}${note?'\n📝 '+note:''}\n━━━━━━━━━━━━━━━━━\n*ARTICLES :*\n${lignes}\n━━━━━━━━━━━━━━━━━\n🛒 Sous-total : ${sub.toFixed(2)} €\n🛵 Livraison : ${frais===0?'🎉 Gratuite':frais.toFixed(2)+' €'}${cadeauLine}\n💰 *TOTAL : ${total.toFixed(2)} €*\n💳 Paiement : ${payMode}\n━━━━━━━━━━━━━━━━━`
+  // Messages statut pour le client
+  const msgDepart = encodeURIComponent(`🛵 Bonjour ${nom} !\nVotre commande FreshCorner est en route !\nJe serai chez vous dans quelques minutes. 🧃`)
+  const msgLivre = encodeURIComponent(`✅ Bonjour ${nom} !\nVotre commande FreshCorner a bien été livrée !\nMerci pour votre commande et à bientôt 😊🧃`)
+
+  // Lien Google Maps avec l'adresse
+  const mapsLink = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(adr)}&travelmode=driving`
+
+  // Liens WhatsApp client (numéro nettoyé)
+  const telClean = tel.replace(/[^0-9]/g,'').replace(/^0/,'33')
+  const lienDepart = `https://wa.me/${telClean}?text=${msgDepart}`
+  const lienLivre = `https://wa.me/${telClean}?text=${msgLivre}`
+
+  const msg=`🧃 *NOUVELLE COMMANDE FreshCorner*
+━━━━━━━━━━━━━━━━━
+📅 ${d} à ${h}
+👤 *${nom}*
+📱 ${tel}
+📍 ${adr}${note?'\n📝 '+note:''}
+━━━━━━━━━━━━━━━━━
+*ARTICLES :*
+${lignes}
+━━━━━━━━━━━━━━━━━
+🛒 Sous-total : ${sub.toFixed(2)} €
+🛵 Livraison : ${frais===0?'🎉 Gratuite':frais.toFixed(2)+' €'}${cadeauLine}
+💰 *TOTAL : ${total.toFixed(2)} €*
+💳 Paiement : ${payMode}
+━━━━━━━━━━━━━━━━━
+*ACTIONS RAPIDES :*
+🗺️ Maps : ${mapsLink}
+🛵 Prévenir départ : ${lienDepart}
+✅ Prévenir livraison : ${lienLivre}
+━━━━━━━━━━━━━━━━━`
   window.open(`https://wa.me/${LIVREUR_WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank')
   closeSheet()
   document.getElementById('page-catalogue').style.display='none'
