@@ -41,6 +41,28 @@
     .promo-pill.purple{border-color:var(--border2);color:var(--purple-light)}
     .hero-pills{display:flex;gap:6px;flex-wrap:wrap}
     .hpill{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;background:var(--bg2);border:1px solid var(--border);color:var(--t2)}
+    .horaires-card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--rsm);padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+    .horaires-left{display:flex;align-items:center;gap:8px}
+    .horaires-label{font-size:10px;color:var(--t3);margin-bottom:1px}
+    .horaires-time{font-size:13px;font-weight:800;color:var(--t1)}
+    .preco-banner{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);border-radius:var(--rsm);padding:10px 14px;margin-bottom:12px;display:none}
+    .preco-banner h3{font-size:13px;font-weight:800;color:#fbbf24;margin-bottom:2px}
+    .preco-banner p{font-size:11px;color:var(--t2);line-height:1.4}
+    .horaire-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px}
+    .tabs{display:flex;border-bottom:1px solid var(--border);margin-top:4px}
+    .tab-btn{flex:1;padding:11px;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--t3);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s}
+    .tab-btn.active{color:var(--purple);border-bottom-color:var(--purple)}
+    .sugg-page{padding:20px 16px 100px;display:none}
+    .sugg-form{background:var(--bg1);border:1px solid var(--border2);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+    .sugg-form h2{font-size:15px;font-weight:800}
+    .sugg-form p{font-size:12px;color:var(--t2);line-height:1.5}
+    .btn-green{width:100%;padding:14px;border-radius:var(--rsm);border:none;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+    .sugg-list{display:flex;flex-direction:column;gap:8px}
+    .sugg-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:12px}
+    .sugg-item-prod{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px}
+    .sugg-item-raison{font-size:11px;color:var(--t2);margin-bottom:4px}
+    .sugg-item-meta{font-size:10px;color:var(--t3)}
+    .sugg-empty{color:var(--t3);font-size:12px;text-align:center;padding:30px}
     .cats-bar{display:flex;gap:6px;overflow-x:auto;padding:10px 16px 6px;scrollbar-width:none;border-bottom:1px solid var(--border)}
     .cats-bar::-webkit-scrollbar{display:none}
     .cat-chip{padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);color:var(--t3);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;flex-shrink:0;transition:all .15s}
@@ -139,15 +161,37 @@
     .conf-row span:first-child{color:var(--t3)}
     .conf-total{font-size:22px;font-weight:900;color:var(--purple)}
     .btn-new{padding:13px 28px;border-radius:var(--rsm);border:1px solid var(--border2);background:var(--bg2);color:var(--t2);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:7px}
+    /* SPLASH */
+    #splash{position:fixed;inset:0;z-index:9999;background:#08080f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+    .sp-logo{width:96px;height:96px;border-radius:26px;background:linear-gradient(135deg,#a855f7,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 20px 60px rgba(168,85,247,.5);animation:splashDrop .7s cubic-bezier(.34,1.56,.64,1) .1s both}
+    @keyframes splashDrop{from{transform:translateY(-120px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .sp-title{font-size:32px;font-weight:900;letter-spacing:-1.5px;animation:splashFade .5s ease .5s both}
+    .sp-title span{background:linear-gradient(135deg,#a855f7,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .sp-sub{font-size:13px;color:rgba(255,255,255,.3);animation:splashFade .5s ease .65s both}
+    @keyframes splashFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .sp-bar{width:120px;height:3px;background:rgba(168,85,247,.2);border-radius:2px;overflow:hidden;animation:splashFade .5s ease .7s both}
+    .sp-bar-fill{height:100%;background:linear-gradient(90deg,#a855f7,#c084fc);border-radius:2px;animation:spLoad 1.6s ease .3s both}
+    @keyframes spLoad{from{width:0}to{width:100%}}
+    #splash.out{animation:splashOut .4s ease forwards}
+    @keyframes splashOut{from{opacity:1}to{opacity:0;pointer-events:none}}
     .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);padding:10px 18px;border-radius:var(--r);font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;z-index:999;white-space:nowrap;animation:tin .2s ease;background:var(--purple-bg);border:1px solid var(--purple-d);color:var(--purple-light)}
     @keyframes tin{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
   </style>
 </head>
 <body>
 
+<!-- SPLASH -->
+<div id="splash">
+  <div class="sp-logo">🧃</div>
+  <div class="sp-title">Fresh<span>Corner</span></div>
+  <div class="sp-sub">Boissons & snacks livrés chez vous</div>
+  <div class="sp-bar"><div class="sp-bar-fill"></div></div>
+</div>
+
 <div id="page-catalogue">
   <div class="header">
     <div class="logo">Fresh<span>Corner</span></div>
+    <div id="horaire-badge" class="horaire-badge"></div>
     <button class="cart-pill" id="cart-pill" onclick="openSheet()" style="display:none">
       <i class="ti ti-shopping-cart" style="font-size:15px"></i>
       <span id="pill-label">0</span>
@@ -164,6 +208,22 @@
       <div class="promo-pill green"><i class="ti ti-truck" style="font-size:14px;flex-shrink:0"></i><div><strong>Livraison gratuite</strong> dès 20€ <span style="opacity:.7">(sinon 2€)</span></div></div>
       <div class="promo-pill purple"><i class="ti ti-gift" style="font-size:14px;flex-shrink:0"></i><div><strong>1 canette offerte</strong> dès 50€</div></div>
     </div>
+    <!-- Horaires -->
+    <div class="horaires-card">
+      <div class="horaires-left">
+        <i class="ti ti-clock" style="font-size:16px;color:var(--purple-light)"></i>
+        <div>
+          <div class="horaires-label">Horaires d'ouverture</div>
+          <div class="horaires-time">22h30 — 01h00 · Tous les jours</div>
+        </div>
+      </div>
+      <div id="statut-txt" style="font-size:12px;font-weight:700"></div>
+    </div>
+    <!-- Bannière pré-commande -->
+    <div class="preco-banner" id="preco-banner">
+      <h3>🕐 Mode pré-commande</h3>
+      <p id="preco-sub">Ta commande sera préparée dès l'ouverture à 22h30</p>
+    </div>
     <div class="hero-pills">
       <span class="hpill">⚡ Rapide</span>
       <span class="hpill">💳 Paiement livraison</span>
@@ -171,8 +231,32 @@
     </div>
   </div>
 
-  <div class="cats-bar" id="cats-bar"></div>
-  <div class="catalogue" id="catalogue"></div>
+  <!-- Onglets -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-cat-btn" onclick="showTab('cat')">🛒 Catalogue</button>
+    <button class="tab-btn" id="tab-sugg-btn" onclick="showTab('sugg')">💡 Suggestions</button>
+  </div>
+  <!-- Catalogue -->
+  <div id="tab-cat">
+    <div class="cats-bar" id="cats-bar"></div>
+    <div class="catalogue" id="catalogue"></div>
+  </div>
+  <!-- Suggestions -->
+  <div class="sugg-page" id="tab-sugg">
+    <div class="sugg-form">
+      <h2>💡 Suggère un produit</h2>
+      <p>Tu voudrais qu'on propose un produit en particulier ? Dis-le nous !</p>
+      <div class="field"><label>Le produit 🛍️</label><input id="sugg-produit" type="text" placeholder="Ex: Red Bull Tropical, Lay's..."></div>
+      <div class="field"><label>Pourquoi tu l'aimes ? (optionnel)</label><input id="sugg-raison" type="text" placeholder="Ex: C'est mon préféré !"></div>
+      <div class="field"><label>Ton prénom (optionnel)</label><input id="sugg-nom" type="text" placeholder="Ex: Marie"></div>
+      <button class="btn-green" onclick="envoyerSuggestion()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Envoyer via WhatsApp
+      </button>
+    </div>
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:10px">💬 Suggestions récentes</div>
+    <div class="sugg-list" id="sugg-list"></div>
+  </div>
 </div>
 
 <div id="page-confirm">
@@ -652,8 +736,131 @@ const PROD_IMGS = {
   94: "data:image/webp;base64,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",
 };
 
+// ─── HORAIRES ────────────────────────────────────────────────────────────────
+const HEURE_DEBUT = 22 * 60 + 30
+const HEURE_FIN   = 1  * 60 + 0
+
+function isOuvert() {
+  const m = new Date().getHours() * 60 + new Date().getMinutes()
+  return m >= HEURE_DEBUT || m < HEURE_FIN
+}
+
+function getTempsAvant() {
+  const m = new Date().getHours() * 60 + new Date().getMinutes()
+  let diff = HEURE_DEBUT - m
+  if (diff < 0) diff += 24 * 60
+  const h = Math.floor(diff / 60), min = diff % 60
+  return h > 0 ? `Ouvre dans ${h}h${min > 0 ? min+'min' : ''}` : `Ouvre dans ${min} min`
+}
+
+function initHoraires() {
+  const ouvert = isOuvert()
+  const badge = document.getElementById('horaire-badge')
+  const statutTxt = document.getElementById('statut-txt')
+  const precoBanner = document.getElementById('preco-banner')
+  const precoSub = document.getElementById('preco-sub')
+
+  if (ouvert) {
+    badge.textContent = '🟢 Ouvert'
+    badge.style.cssText = 'background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px'
+    statutTxt.textContent = '🟢 Ouvert'
+    statutTxt.style.color = '#22c55e'
+    precoBanner.style.display = 'none'
+  } else {
+    const tps = getTempsAvant()
+    badge.textContent = '🕐 ' + tps
+    badge.style.cssText = 'background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.3);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px'
+    statutTxt.textContent = '🟡 ' + tps
+    statutTxt.style.color = '#fbbf24'
+    precoBanner.style.display = 'block'
+    precoSub.textContent = tps + ' — Ta commande sera traitée à 22h30'
+    // Bouton pré-commande
+    const btn = document.getElementById('btn-order')
+    if (btn) {
+      btn.style.background = 'linear-gradient(135deg,#f59e0b,#d97706)'
+      btn.style.boxShadow = '0 4px 20px rgba(245,158,11,.3)'
+      const span = btn.querySelector('span')
+      if (span) span.textContent = span.textContent
+      btn.innerHTML = btn.innerHTML.replace('Commander', 'Pré-commander')
+    }
+  }
+}
+
+// ─── ONGLETS ─────────────────────────────────────────────────────────────────
+function showTab(tab) {
+  const isCat = tab === 'cat'
+  document.getElementById('tab-cat').style.display = isCat ? 'block' : 'none'
+  document.getElementById('tab-sugg').style.display = isCat ? 'none' : 'block'
+  document.getElementById('tab-cat-btn').classList.toggle('active', isCat)
+  document.getElementById('tab-sugg-btn').classList.toggle('active', !isCat)
+  if (!isCat) renderSuggestions()
+}
+
+// ─── SUGGESTIONS ─────────────────────────────────────────────────────────────
+function envoyerSuggestion() {
+  const produit = document.getElementById('sugg-produit').value.trim()
+  const raison = document.getElementById('sugg-raison').value.trim()
+  const nom = document.getElementById('sugg-nom').value.trim()
+  if (!produit) { alert('Indique le produit souhaité !'); return }
+  const suggestions = JSON.parse(localStorage.getItem('fc_suggestions') || '[]')
+  suggestions.unshift({ produit, raison, nom: nom || 'Anonyme', date: new Date().toLocaleDateString('fr') })
+  localStorage.setItem('fc_suggestions', JSON.stringify(suggestions.slice(0, 20)))
+  const msg = `💡 *SUGGESTION PRODUIT — FreshCorner*\n━━━━━━━━━━━━━━━━━\n🛍️ *${produit}*${raison ? '\n💬 ' + raison : ''}${nom ? '\n👤 ' + nom : '\n👤 Anonyme'}\n━━━━━━━━━━━━━━━━━`
+  window.open('https://wa.me/' + LIVREUR_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank')
+  document.getElementById('sugg-produit').value = ''
+  document.getElementById('sugg-raison').value = ''
+  document.getElementById('sugg-nom').value = ''
+  renderSuggestions()
+  toast('Suggestion envoyée ! Merci 🙏')
+}
+
+function renderSuggestions() {
+  const suggestions = JSON.parse(localStorage.getItem('fc_suggestions') || '[]')
+  const el = document.getElementById('sugg-list')
+  if (!suggestions.length) { el.innerHTML = '<div class="sugg-empty">Sois le premier à suggérer un produit ! 💡</div>'; return }
+  el.innerHTML = suggestions.map(s => `
+    <div class="sugg-item">
+      <div class="sugg-item-prod">🛍️ ${s.produit}</div>
+      ${s.raison ? '<div class="sugg-item-raison">💬 ' + s.raison + '</div>' : ''}
+      <div class="sugg-item-meta">${s.nom} · ${s.date}</div>
+    </div>`).join('')
+}
+
+// ─── PRÉ-COMMANDE dans le message WhatsApp ───────────────────────────────────
+const _origCommander = commander
+commander = function() {
+  // Patch : ajouter mention pré-commande dans le titre du message
+  const ouvert = isOuvert()
+  if (!ouvert) {
+    // Intercepter le message WA pour ajouter ⏰ PRÉ-COMMANDE
+    const origOpen = window.open
+    window.open = function(url, target) {
+      if (url && url.includes('wa.me')) {
+        url = url.replace('NOUVELLE%20COMMANDE', '%E2%8F%B0%20PR%C3%89-COMMANDE')
+        url = url.replace('NOUVELLE COMMANDE', '⏰ PRÉ-COMMANDE')
+      }
+      window.open = origOpen
+      return origOpen.call(this, url, target)
+    }
+  }
+  _origCommander.apply(this, arguments)
+}
+
+initHoraires()
 renderCats()
 renderProds()
+
+// Splash — disparaît après 2s
+;(function() {
+  var splash = document.getElementById('splash')
+  if (!splash) return
+  setTimeout(function() {
+    splash.classList.add('out')
+    setTimeout(function() {
+      splash.style.display = 'none'
+    }, 400)
+  }, 2000)
+})()
 </script>
 </body>
 </html>
